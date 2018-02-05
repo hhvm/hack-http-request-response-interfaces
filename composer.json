@@ -1,5 +1,8 @@
 {
     "name": "hhvm/experimental-http-request-response-interfaces",
     "description": "Common interface for HTTP messages",
-    "homepage": "https://github.com/facebookexperimental/hack-http-request-response-interfaces"
+    "homepage": "https://github.com/facebookexperimental/hack-http-request-response-interfaces",
+    "require-dev": {
+        "hhvm/hhast": "^0.6.0"
+    }
 }
