@@ -1,17 +1,23 @@
-PSR Http Message
-================
-
-This repository holds all interfaces/classes/traits related to
-[PSR-7](http://www.php-fig.org/psr/psr-7/).
-
-Note that this is not a HTTP message implementation of its own. It is merely an
-interface that describes a HTTP message. See the specification for more details.
-
 Hack HTTP Request and Response Interfaces
 =========================================
 
 This project aims to create standard request and response interfaces for Hack,
-using PSR-7 as a starting point.
+using [PSR-7](http://www.php-fig.org/psr/psr-7/) as a starting point.
+
+This project is currently *highly experimental* - all APIs are subject to
+change, and we welcome discussion and feedback.
+
+## Motivation
+
+PSR-7 was designed for PHP, not Hack, and some descisions do not fit smoothly
+with Hack's type system.
+
+We would like agreement on a standardized interface before releasing v1.0 of
+several libraries that could and should use this.
+
+## Requirements
+
+HHVM 3.24 and above.
 
 ## License
 
