@@ -1,5 +1,5 @@
 {
-    "name": "hhvm/hack-http-request-response-interfaces",
+    "name": "hhvm/experimental-http-request-response-interfaces",
     "description": "Common interface for HTTP messages",
     "homepage": "https://github.com/facebookexperimental/hack-http-request-response-interfaces"
 }

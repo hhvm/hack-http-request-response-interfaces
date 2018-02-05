@@ -1,4 +1,4 @@
-<?php
+<?hh // strict
 /*
  *  Copyright (c) 2014 PHP Framework Interoperability Group
  *
@@ -19,9 +19,16 @@
  *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
+ *
+ *  Portions Copyright (c) 2018-present, Facebook, Inc.
+ *  All rights reserved.
+ *
+ *  This source code is licensed under the BSD-style license found in the
+ *  LICENSE file in the root directory of this source tree. An additional grant
+ *  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-namespace Psr\Http\Message;
+namespace Facebook\Experimental\Http\Message;
 
 /**
  * Value object representing a file uploaded through an HTTP request.
