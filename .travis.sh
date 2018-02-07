@@ -3,9 +3,8 @@ set -ex
 hhvm --version
 
 wget https://getcomposer.org/composer.phar
-hhvm -d hhvm.php7.all=1 ./composer.phar install --ignore-platform-reqs
+hhvm ./composer.phar install --ignore-platform-reqs
 
 hh_client
 
-hhvm -d hhvm.php7.all=0 bin/hhast-lint
-hhvm -d hhvm.php7.all=1 bin/hhast-lint
+hhvm vendor/bin/hhast-lint
