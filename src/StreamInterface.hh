@@ -142,7 +142,7 @@ interface StreamInterface {
    *     if no bytes are available.
    * @throws \RuntimeException if an error occurs.
    */
-  public function read(int $length): int;
+  public function read(int $length): string;
 
   /**
    * Returns the remaining contents in a string
