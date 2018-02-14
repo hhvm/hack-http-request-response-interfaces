@@ -9,16 +9,16 @@
     "packages-dev": [
         {
             "name": "facebook/hack-codegen",
-            "version": "v3.0.3",
+            "version": "v3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hack-codegen.git",
-                "reference": "4a6fd111c7f1d1b6d2e73f2668637223e8592aa3"
+                "reference": "fb23a839e41ca5d0ed577530f2442c2fc6dfd6ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hack-codegen/zipball/4a6fd111c7f1d1b6d2e73f2668637223e8592aa3",
-                "reference": "4a6fd111c7f1d1b6d2e73f2668637223e8592aa3",
+                "url": "https://api.github.com/repos/hhvm/hack-codegen/zipball/fb23a839e41ca5d0ed577530f2442c2fc6dfd6ba",
+                "reference": "fb23a839e41ca5d0ed577530f2442c2fc6dfd6ba",
                 "shasum": ""
             },
             "require": {
@@ -65,7 +65,7 @@
                 "code generation",
                 "hack"
             ],
-            "time": "2018-01-09T19:54:23+00:00"
+            "time": "2018-02-09T17:41:15+00:00"
         },
         {
             "name": "fredemmott/hack-error-suppressor",
@@ -139,16 +139,16 @@
         },
         {
             "name": "hhvm/hhvm-autoload",
-            "version": "v1.6.0",
+            "version": "v1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hhvm-autoload.git",
-                "reference": "a2124986412f2c86d7da84b67a8c7b37bde25a3f"
+                "reference": "6ea8fe2cf396a5e9f15d4ef1097ef4d9dcd15eaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hhvm-autoload/zipball/a2124986412f2c86d7da84b67a8c7b37bde25a3f",
-                "reference": "a2124986412f2c86d7da84b67a8c7b37bde25a3f",
+                "url": "https://api.github.com/repos/hhvm/hhvm-autoload/zipball/6ea8fe2cf396a5e9f15d4ef1097ef4d9dcd15eaa",
+                "reference": "6ea8fe2cf396a5e9f15d4ef1097ef4d9dcd15eaa",
                 "shasum": ""
             },
             "require": {
@@ -184,20 +184,20 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2018-01-18T22:05:10+00:00"
+            "time": "2018-02-08T22:51:10+00:00"
         },
         {
             "name": "hhvm/hsl",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hsl.git",
-                "reference": "ef61c015ab5969d10c2b0d66cfbc1dd20b13ec17"
+                "reference": "556bb0a0749226417dd0f53567571ecc008f37f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hsl/zipball/ef61c015ab5969d10c2b0d66cfbc1dd20b13ec17",
-                "reference": "ef61c015ab5969d10c2b0d66cfbc1dd20b13ec17",
+                "url": "https://api.github.com/repos/hhvm/hsl/zipball/556bb0a0749226417dd0f53567571ecc008f37f2",
+                "reference": "556bb0a0749226417dd0f53567571ecc008f37f2",
                 "shasum": ""
             },
             "require": {
@@ -213,30 +213,30 @@
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
             "description": "The Hack Standard Library",
-            "time": "2018-01-05T23:38:40+00:00"
+            "time": "2018-02-05T22:10:31+00:00"
         },
         {
             "name": "hhvm/type-assert",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/type-assert.git",
-                "reference": "fb7771076e78e38c7578ce94c7a2e81d6f9dcdb0"
+                "reference": "8f70814c8268f50e2fa728893d3ad9cad73df398"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/type-assert/zipball/fb7771076e78e38c7578ce94c7a2e81d6f9dcdb0",
-                "reference": "fb7771076e78e38c7578ce94c7a2e81d6f9dcdb0",
+                "url": "https://api.github.com/repos/hhvm/type-assert/zipball/8f70814c8268f50e2fa728893d3ad9cad73df398",
+                "reference": "8f70814c8268f50e2fa728893d3ad9cad73df398",
                 "shasum": ""
             },
             "require": {
                 "hhvm": "^3.23.0",
+                "hhvm/hhvm-autoload": "^1.4",
                 "hhvm/hsl": "^1.0"
             },
             "require-dev": {
                 "91carriage/phpunit-hhi": "~5.1",
                 "facebook/fbexpect": "^0.2.0 | ^0.3.0 | ^0.4.0",
-                "hhvm/hhvm-autoload": "^1.4",
                 "phpunit/phpunit": "~5.1"
             },
             "type": "library",
@@ -246,7 +246,7 @@
                 "TypeAssert",
                 "hack"
             ],
-            "time": "2018-01-08T17:56:33+00:00"
+            "time": "2018-02-09T17:05:23+00:00"
         }
     ],
     "aliases": [],
