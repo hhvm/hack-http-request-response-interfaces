@@ -38,18 +38,6 @@ namespace Facebook\Experimental\Http\Message;
  * the entire stream to a string.
  */
 interface StreamInterface {
-  /**
-   * Reads all data from the stream into a string, from the beginning to end.
-   *
-   * This method MUST attempt to seek to the beginning of the stream before
-   * reading data and read the stream until the end is reached.
-   *
-   * Warning: This could attempt to load a large amount of data into memory.
-   *
-   * This method MUST NOT raise an exception in order to conform with PHP's
-   * string casting operations.
-   */
-  public function __toString(): string;
 
   /**
    * Closes the stream and any underlying resources.
@@ -145,13 +133,27 @@ interface StreamInterface {
   public function read(int $length): string;
 
   /**
+   * Reads all data from the stream into a string, from the beginning to end.
+   *
+   * This method MUST attempt to seek to the beginning of the stream before
+   * reading data and read the stream until the end is reached.
+   *
+   * Warning: This could attempt to load a large amount of data into memory.
+   *
+   * @return string
+   * @throws \RuntimeException if unable to read or an error occurs while
+   *     reading.
+   */
+  public function getFullContents(): string;
+
+  /**
    * Returns the remaining contents in a string
    *
    * @return string
    * @throws \RuntimeException if unable to read or an error occurs while
    *     reading.
    */
-  public function getContents(): string;
+  public function getRemainingContents(): string;
 
   /**
    * Get stream metadata as a dict.
