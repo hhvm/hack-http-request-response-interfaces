@@ -3,6 +3,6 @@
     "description": "Common interface for HTTP messages",
     "homepage": "https://github.com/facebookexperimental/hack-http-request-response-interfaces",
     "require-dev": {
-        "hhvm/hhast": "^0.6.0"
+        "hhvm/hhast": "^0.6.0|^1.0.0"
     }
 }

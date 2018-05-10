@@ -4,69 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a671ee9fca24411d2d4a7166f340954",
+    "content-hash": "d6abd3ba8d08b35fef675f8a4736330e",
     "packages": [],
     "packages-dev": [
-        {
-            "name": "facebook/hack-codegen",
-            "version": "v3.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hhvm/hack-codegen.git",
-                "reference": "fb23a839e41ca5d0ed577530f2442c2fc6dfd6ba"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hack-codegen/zipball/fb23a839e41ca5d0ed577530f2442c2fc6dfd6ba",
-                "reference": "fb23a839e41ca5d0ed577530f2442c2fc6dfd6ba",
-                "shasum": ""
-            },
-            "require": {
-                "hhvm": ">=3.23.0",
-                "hhvm/hhvm-autoload": "^1.5",
-                "hhvm/hsl": "^1.0.0"
-            },
-            "require-dev": {
-                "91carriage/phpunit-hhi": "^5.6",
-                "facebook/fbexpect": "^0.4.0",
-                "hhvm/hhast": "^0.4.0",
-                "hhvm/type-assert": "^3.1",
-                "phpunit/phpunit": "^5.7"
-            },
-            "bin": [
-                "bin/hh-codegen-verify-signatures"
-            ],
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Drew Hoskins",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Gaurav Kumar",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Alejandro Marcu",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Matthieu Martin",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Fred Emmott",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Hack Codegen is a library for programatically generating Hack code",
-            "keywords": [
-                "code generation",
-                "hack"
-            ],
-            "time": "2018-02-09T17:41:15+00:00"
-        },
         {
             "name": "fredemmott/hack-error-suppressor",
             "version": "v1.0.1",
@@ -106,27 +46,27 @@
         },
         {
             "name": "hhvm/hhast",
-            "version": "v0.6",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hhast.git",
-                "reference": "71f2ce15efc03a5cd8ae64508f0b9c875bd85035"
+                "reference": "97916ba3945d95f89ba6e33ceadbde16bfa0e02e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hhast/zipball/71f2ce15efc03a5cd8ae64508f0b9c875bd85035",
-                "reference": "71f2ce15efc03a5cd8ae64508f0b9c875bd85035",
+                "url": "https://api.github.com/repos/hhvm/hhast/zipball/97916ba3945d95f89ba6e33ceadbde16bfa0e02e",
+                "reference": "97916ba3945d95f89ba6e33ceadbde16bfa0e02e",
                 "shasum": ""
             },
             "require": {
-                "facebook/hack-codegen": "~3.0.3",
-                "hhvm": "^3.24.0 <3.25.0",
+                "hhvm": "^3.24.0",
                 "hhvm/hsl": "^1.0.0",
                 "hhvm/type-assert": "^3.1"
             },
             "require-dev": {
                 "91carriage/phpunit-hhi": "^5.7",
                 "facebook/fbexpect": "^0.4.0",
+                "facebook/hack-codegen": "~3.0.3",
                 "hhvm/hhvm-autoload": "^1.5",
                 "phpunit/phpunit": "^5.7"
             },
@@ -135,20 +75,20 @@
             ],
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2018-01-11T00:10:50+00:00"
+            "time": "2018-03-01T22:15:51+00:00"
         },
         {
             "name": "hhvm/hhvm-autoload",
-            "version": "v1.6.1",
+            "version": "v1.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hhvm-autoload.git",
-                "reference": "6ea8fe2cf396a5e9f15d4ef1097ef4d9dcd15eaa"
+                "reference": "2e3944571aa61b16336bea9254856f5ae4aea48c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hhvm-autoload/zipball/6ea8fe2cf396a5e9f15d4ef1097ef4d9dcd15eaa",
-                "reference": "6ea8fe2cf396a5e9f15d4ef1097ef4d9dcd15eaa",
+                "url": "https://api.github.com/repos/hhvm/hhvm-autoload/zipball/2e3944571aa61b16336bea9254856f5ae4aea48c",
+                "reference": "2e3944571aa61b16336bea9254856f5ae4aea48c",
                 "shasum": ""
             },
             "require": {
@@ -184,69 +124,71 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2018-02-08T22:51:10+00:00"
+            "time": "2018-05-08T17:26:24+00:00"
         },
         {
             "name": "hhvm/hsl",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hsl.git",
-                "reference": "556bb0a0749226417dd0f53567571ecc008f37f2"
+                "reference": "2d40281ec595b25a09bbe51d9216edbf1ad55a42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hsl/zipball/556bb0a0749226417dd0f53567571ecc008f37f2",
-                "reference": "556bb0a0749226417dd0f53567571ecc008f37f2",
+                "url": "https://api.github.com/repos/hhvm/hsl/zipball/2d40281ec595b25a09bbe51d9216edbf1ad55a42",
+                "reference": "2d40281ec595b25a09bbe51d9216edbf1ad55a42",
                 "shasum": ""
             },
             "require": {
+                "hhvm": "^3.23.2",
                 "hhvm/hhvm-autoload": "^1.4"
             },
             "require-dev": {
                 "91carriage/phpunit-hhi": "^5.7",
-                "facebook/definition-finder": "^1.6.1",
                 "facebook/fbexpect": "^0.4",
-                "hhvm": "^3.23.2",
                 "phpunit/phpunit": "^5.7"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
             "description": "The Hack Standard Library",
-            "time": "2018-02-05T22:10:31+00:00"
+            "time": "2018-03-09T21:53:48+00:00"
         },
         {
             "name": "hhvm/type-assert",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/type-assert.git",
-                "reference": "8f70814c8268f50e2fa728893d3ad9cad73df398"
+                "reference": "9bbe7cac2ff831142d74203479e72046cbc932f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/type-assert/zipball/8f70814c8268f50e2fa728893d3ad9cad73df398",
-                "reference": "8f70814c8268f50e2fa728893d3ad9cad73df398",
+                "url": "https://api.github.com/repos/hhvm/type-assert/zipball/9bbe7cac2ff831142d74203479e72046cbc932f8",
+                "reference": "9bbe7cac2ff831142d74203479e72046cbc932f8",
                 "shasum": ""
             },
             "require": {
                 "hhvm": "^3.23.0",
                 "hhvm/hhvm-autoload": "^1.4",
-                "hhvm/hsl": "^1.0"
+                "hhvm/hsl": "^1.0|^3.26.0"
             },
             "require-dev": {
                 "91carriage/phpunit-hhi": "~5.1",
-                "facebook/fbexpect": "^0.2.0 | ^0.3.0 | ^0.4.0",
+                "facebook/fbexpect": "^0.4.0|^1.0.0",
                 "phpunit/phpunit": "~5.1"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "description": "Convert untyped data to typed data",
             "keywords": [
                 "TypeAssert",
                 "hack"
             ],
-            "time": "2018-02-09T17:05:23+00:00"
+            "time": "2018-05-09T18:23:07+00:00"
         }
     ],
     "aliases": [],
