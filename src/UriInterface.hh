@@ -156,7 +156,7 @@ interface UriInterface {
   public function getPath(): string;
 
   /**
-   * Retrieve the query string of the URI.
+   * Retrieve the encoded query string of the URI.
    *
    * If no query string is present, this method MUST return an empty string.
    *
@@ -173,8 +173,20 @@ interface UriInterface {
    *
    * @see https://tools.ietf.org/html/rfc3986#section-2
    * @see https://tools.ietf.org/html/rfc3986#section-3.4
+   * @return string The percent-encoded query string
    */
   public function getQuery(): string;
+
+  /**
+   * Retrieve the query params of the URI.
+   *
+   * If no query params dict is present, this method MUST return an empty dict.
+   *
+   * The value returned MUST be the same as the value passed to withRawQuery()
+   *
+   * @return dict<string, ?string> The query params dict with unencoded (raw) values
+   */
+  public function getRawQuery(): dict<string, ?string>;
 
   /**
    * Retrieve the fragment component of the URI.
@@ -271,21 +283,26 @@ interface UriInterface {
   public function withPath(string $path): this;
 
   /**
-   * Return an instance with the specified query string.
+   * Return an instance with the specified query params dict.
    *
    * This method MUST retain the state of the current instance, and return
-   * an instance that contains the specified query string.
+   * an instance that contains the specified query.
    *
-   * Users can provide both encoded and decoded query characters.
+   * Users must provide only unencoded (raw) query characters in order to avoid double
+   * encoding.
    * Implementations ensure the correct encoding as outlined in getQuery().
    *
-   * An empty query string value is equivalent to removing the query string.
+   * All query params which value is set to null MUST be omitted.
+   * The query params dict is assumed to be empty if there are no elements in
+   * it or all params have been omitted.
    *
-   * @param string $query The query string to use with the new instance.
-   * @return static A new instance with the specified query string.
-   * @throws \InvalidArgumentException for invalid query strings.
+   * An empty query params dict is equivalent to removing the query.
+   *
+   * @param dict<string, ?string> $query The query params.
+   * @return static A new instance with the specified query.
+   * @throws \InvalidArgumentException for invalid query params.
    */
-  public function withQuery(string $query): this;
+  public function withRawQuery(dict<string, ?string> $query): this;
 
   /**
    * Return an instance with the specified URI fragment.
