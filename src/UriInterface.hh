@@ -172,7 +172,7 @@ interface UriInterface {
    *
    * @see https://tools.ietf.org/html/rfc3986#section-2
    * @see https://tools.ietf.org/html/rfc3986#section-3.4
-   * @return string The percent-encoded query string
+   * @return null|string The percent-encoded query string
    */
   public function getRawQuery(): ?string;
 
