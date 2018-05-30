@@ -183,7 +183,7 @@ interface UriInterface {
    *
    * The value returned MUST be the same as the value passed to withRawQuery()
    *
-   * @return dict<string, ?string> The query params dict with unencoded (raw) values
+   * @return dict<string, ?string> The query params with unencoded (raw) values
    */
   public function getRawQuery(): dict<string, string>;
 
