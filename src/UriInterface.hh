@@ -157,7 +157,7 @@ interface UriInterface {
   /**
    * Retrieve the encoded query string of the URI.
    *
-   * If no query string is present, this method MUST return null
+   * If no query params or string is present, this method MUST return null
    *
    * The leading "?" character is not part of the query and MUST NOT be
    * added.
@@ -174,18 +174,16 @@ interface UriInterface {
    * @see https://tools.ietf.org/html/rfc3986#section-3.4
    * @return string The percent-encoded query string
    */
-  public function getQuery(): ?string;
+  public function getRawQuery(): ?string;
 
   /**
    * Retrieve the query params of the URI.
    *
-   * If no query params dict is present, this method MUST return an empty dict.
+   * If no query params are present, this method MUST return an empty dict
    *
-   * The value returned MUST be the same as the value passed to withRawQuery()
-   *
-   * @return dict<string, ?string> The query params with unencoded (raw) values
+   * All keys and values MUST not be encoded.
    */
-  public function getRawQuery(): dict<string, string>;
+  public function getQuery(): dict<string, string>;
 
   /**
    * Retrieve the fragment component of the URI.
@@ -298,7 +296,24 @@ interface UriInterface {
    * @return static A new instance with the specified query.
    * @throws \InvalidArgumentException for invalid query params.
    */
-  public function withRawQuery(dict<string, string> $query): this;
+  public function withQuery(dict<string, string> $query): this;
+
+  /**
+   * Return an instance with the specified query string.
+   *
+   * This method MUST retain the state of the current instance, and return
+   * an instance that contains the specified query.
+   *
+   * Users must provide only unencoded (raw) query characters in order to avoid double
+   * encoding.
+   * Implementations ensure the correct encoding as outlined in getQuery().
+   *
+   * An empty query string is equivalent to removing the query.
+   *
+   * @return static A new instance with the specified query.
+   * @throws \InvalidArgumentException for invalid query params.
+   */
+  public function withRawQuery(string $query): this;
 
   /**
    * Return an instance with the specified URI fragment.
