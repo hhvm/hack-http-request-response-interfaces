@@ -150,8 +150,6 @@ interface RequestInterface extends MessageInterface {
    * new UriInterface instance.
    *
    * @link http://tools.ietf.org/html/rfc3986#section-4.3
-   * @param UriInterface $uri New request URI to use.
-   * @param RequestURIOptions $options
    * @return static
    */
   public function withUri(UriInterface $uri, RequestURIOptions $options = shape('preserveHost' => false)): this;
