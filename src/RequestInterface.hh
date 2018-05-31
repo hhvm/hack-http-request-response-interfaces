@@ -42,6 +42,8 @@ enum HTTPMethod: string {
   CONNECT = 'CONNECT';
 }
 
+type RequestURIOptions = shape('preserveHost' => bool);
+
 /**
  * Representation of an outgoing, client-side request.
  *
@@ -133,7 +135,8 @@ interface RequestInterface extends MessageInterface {
    * over to the returned request.
    *
    * You can opt-in to preserving the original state of the Host header by
-   * setting `$preserveHost` to `true`. When `$preserveHost` is set to
+   * setting `preserveHost` option to `true` in $options shape.
+   * When `preserveHost` option is set to
    * `true`, this method interacts with the Host header in the following ways:
    *
    * - If the Host header is missing or empty, and the new URI contains
@@ -150,9 +153,7 @@ interface RequestInterface extends MessageInterface {
    * new UriInterface instance.
    *
    * @link http://tools.ietf.org/html/rfc3986#section-4.3
-   * @param UriInterface $uri New request URI to use.
-   * @param bool $preserveHost Preserve the original state of the Host header.
    * @return static
    */
-  public function withUri(UriInterface $uri, bool $preserveHost = false): this;
+  public function withUri(UriInterface $uri, RequestURIOptions $options = shape('preserveHost' => false)): this;
 }
