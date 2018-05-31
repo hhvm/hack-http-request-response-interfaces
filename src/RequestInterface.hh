@@ -30,6 +30,18 @@
 
 namespace Facebook\Experimental\Http\Message;
 
+enum HTTPMethod: string {
+  PUT     = 'PUT';
+  GET     = 'GET';
+  POST    = 'POST';
+  HEAD    = 'HEAD';
+  PATCH   = 'PATCH';
+  TRACE   = 'TRACE';
+  DELETE  = 'DELETE';
+  OPTIONS = 'OPTIONS';
+  CONNECT = 'CONNECT';
+}
+
 type RequestURIOptions = shape('preserveHost' => bool);
 
 /**
@@ -91,26 +103,17 @@ interface RequestInterface extends MessageInterface {
 
   /**
    * Retrieves the HTTP method of the request.
-   *
-   * @return string Returns the request method.
    */
-  public function getMethod(): string;
+  public function getMethod(): HTTPMethod;
 
   /**
    * Return an instance with the provided HTTP method.
    *
-   * While HTTP method names are typically all uppercase characters, HTTP
-   * method names are case-sensitive and thus implementations SHOULD NOT
-   * modify the given string.
-   *
    * This method MUST be implemented in such a way as to retain the
    * immutability of the message, and MUST return an instance that has the
    * changed request method.
-   *
-   * @param string $method Case-sensitive method.
-   * @throws \InvalidArgumentException for invalid HTTP methods.
    */
-  public function withMethod(string $method): this;
+  public function withMethod(HTTPMethod $method): this;
 
   /**
    * Retrieves the URI instance.
