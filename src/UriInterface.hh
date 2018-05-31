@@ -155,9 +155,9 @@ interface UriInterface {
   public function getPath(): ?string;
 
   /**
-   * Retrieve the query string of the URI.
+   * Retrieve the encoded query string of the URI.
    *
-   * If no query string is present, this method MUST return null
+   * If no query params or string is present, this method MUST return null
    *
    * The leading "?" character is not part of the query and MUST NOT be
    * added.
@@ -172,8 +172,18 @@ interface UriInterface {
    *
    * @see https://tools.ietf.org/html/rfc3986#section-2
    * @see https://tools.ietf.org/html/rfc3986#section-3.4
+   * @return null|string The percent-encoded query string
    */
-  public function getQuery(): ?string;
+  public function getRawQuery(): ?string;
+
+  /**
+   * Retrieve the query params of the URI.
+   *
+   * If no query params are present, this method MUST return an empty dict
+   *
+   * All keys and values MUST not be encoded.
+   */
+  public function getQuery(): dict<string, string>;
 
   /**
    * Retrieve the fragment component of the URI.
@@ -269,22 +279,41 @@ interface UriInterface {
   public function withPath(?string $path = null): this;
 
   /**
+   * Return an instance with the specified query params.
+   *
+   * This method MUST retain the state of the current instance, and return
+   * an instance that contains the specified query.
+   *
+   * Users must provide only unencoded (raw) query characters in order to avoid double
+   * encoding.
+   * Implementations ensure the correct encoding as outlined in getQuery().
+   * All query params which value is set to an empty string MUST be omitted.
+   * The query params dict is assumed to be empty if there are no elements in
+   * it or all params have been omitted.
+   *
+   * An empty query params dict is equivalent to removing the query.
+   *
+   * @return static A new instance with the specified query.
+   * @throws \InvalidArgumentException for invalid query params.
+   */
+  public function withQuery(dict<string, string> $query): this;
+
+  /**
    * Return an instance with the specified query string.
    *
    * This method MUST retain the state of the current instance, and return
-   * an instance that contains the specified query string.
+   * an instance that contains the specified query.
    *
-   * Users can provide both encoded and decoded query characters.
+   * Users must provide only unencoded (raw) query characters in order to avoid double
+   * encoding.
    * Implementations ensure the correct encoding as outlined in getQuery().
    *
-   * A null value provided for the query string is equivalent to removing the
-   * query string.
+   * An empty query string is equivalent to removing the query.
    *
-   * @param string $query The query string to use with the new instance.
-   * @return static A new instance with the specified query string.
-   * @throws \InvalidArgumentException for invalid query strings.
+   * @return static A new instance with the specified query.
+   * @throws \InvalidArgumentException for invalid query params.
    */
-  public function withQuery(?string $query = null): this;
+  public function withRawQuery(string $query): this;
 
   /**
    * Return an instance with the specified URI fragment.
