@@ -78,10 +78,9 @@ interface RequestInterface extends MessageInterface {
    * If no URI is available, and no request-target has been specifically
    * provided, this method MUST return the string "/".
    *
-   * @return mixed Usually a string, but may be any type if
-   *   `withRequestTarget()` is called
+   * @return string
    */
-  public function getRequestTarget(): mixed;
+  public function getRequestTarget(): string;
 
   /**
    * Return an instance with the specific request-target.
@@ -99,7 +98,7 @@ interface RequestInterface extends MessageInterface {
    *     request-target forms allowed in request messages)
    * @return static
    */
-  public function withRequestTarget(mixed $requestTarget): this;
+  public function withRequestTarget(string $requestTarget): this;
 
   /**
    * Retrieves the HTTP method of the request.
