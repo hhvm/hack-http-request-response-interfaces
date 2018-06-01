@@ -134,6 +134,22 @@ interface MessageInterface {
   public function getHeaderLine(string $name): string;
 
   /**
+   * Return an instance with the provided values replacing the specified header.
+   *
+   * While header names are case-insensitive, the casing of the header will
+   * be preserved by this function, and returned from getHeaders().
+   *
+   * This method MUST be implemented in such a way as to retain the
+   * immutability of the message, and MUST return an instance that has the
+   * new and/or updated header and value.
+   *
+   * @param string $name Case-insensitive header field name.
+   * @param vec<string> $values Header values.
+   * @throws \InvalidArgumentException for invalid header names or values.
+   */
+  public function withHeader(string $name, vec<string> $values): this;
+
+  /**
    * Return an instance with the provided value replacing the specified header.
    *
    * While header names are case-insensitive, the casing of the header will
@@ -144,16 +160,16 @@ interface MessageInterface {
    * new and/or updated header and value.
    *
    * @param string $name Case-insensitive header field name.
-   * @param string|string[] $value Header value(s).
+   * @param string $value Header value.
    * @throws \InvalidArgumentException for invalid header names or values.
    */
-  public function withHeader(string $name, mixed $value): this;
+  public function withHeaderLine(string $name, string $value): this;
 
   /**
-   * Return an instance with the specified header appended with the given value.
+   * Return an instance with the specified header appended with the given values.
    *
    * Existing values for the specified header will be maintained. The new
-   * value(s) will be appended to the existing list. If the header did not
+   * values will be appended to the existing list. If the header did not
    * exist previously, it will be added.
    *
    * This method MUST be implemented in such a way as to retain the
@@ -161,11 +177,29 @@ interface MessageInterface {
    * new header and/or value.
    *
    * @param string $name Case-insensitive header field name to add.
-   * @param string|string[] $value Header value(s).
+   * @param vec<string> $value Header values.
    * @return static
    * @throws \InvalidArgumentException for invalid header names or values.
    */
-  public function withAddedHeader(string $name, mixed $value): this;
+  public function withAddedHeader(string $name, vec<string> $values): this;
+
+  /**
+   * Return an instance with the specified header appended with the given value.
+   *
+   * Existing values for the specified header will be maintained. The new
+   * value will be appended to the existing list. If the header did not
+   * exist previously, it will be added.
+   *
+   * This method MUST be implemented in such a way as to retain the
+   * immutability of the message, and MUST return an instance that has the
+   * new header and/or value.
+   *
+   * @param string $name Case-insensitive header field name to add.
+   * @param string $value Header value.
+   * @return static
+   * @throws \InvalidArgumentException for invalid header names or values.
+   */
+  public function withAddedHeaderLine(string $name, string $value): this;
 
   /**
    * Return an instance without the specified header.
