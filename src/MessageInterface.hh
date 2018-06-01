@@ -144,7 +144,6 @@ interface MessageInterface {
    * new and/or updated header and value.
    *
    * @param string $name Case-insensitive header field name.
-   * @param vec<string> $values Header values.
    * @throws \InvalidArgumentException for invalid header names or values.
    */
   public function withHeader(string $name, vec<string> $values): this;
@@ -160,7 +159,6 @@ interface MessageInterface {
    * new and/or updated header and value.
    *
    * @param string $name Case-insensitive header field name.
-   * @param string $value Header value.
    * @throws \InvalidArgumentException for invalid header names or values.
    */
   public function withHeaderLine(string $name, string $value): this;
@@ -177,7 +175,6 @@ interface MessageInterface {
    * new header and/or value.
    *
    * @param string $name Case-insensitive header field name to add.
-   * @param vec<string> $value Header values.
    * @return static
    * @throws \InvalidArgumentException for invalid header names or values.
    */
@@ -195,7 +192,6 @@ interface MessageInterface {
    * new header and/or value.
    *
    * @param string $name Case-insensitive header field name to add.
-   * @param string $value Header value.
    * @return static
    * @throws \InvalidArgumentException for invalid header names or values.
    */
