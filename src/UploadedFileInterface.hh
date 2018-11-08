@@ -30,6 +30,16 @@
 
 namespace Facebook\Experimental\Http\Message;
 
+enum UploadedFileError: int {
+	ERROR_EXCEEDS_MAX_INI_SIZE = 1;
+	ERROR_EXCEEDS_MAX_FORM_SIZE = 2;
+	ERROR_INCOMPLETE = 3;
+	ERROR_NO_FILE = 4;
+	ERROR_TMP_DIR_NOT_SPECIFIED = 6;
+	ERROR_TMP_DIR_NOT_WRITEABLE = 7;
+	ERROR_CANCELED_BY_EXTENSION = 8;
+}
+
 /**
  * Value object representing a file uploaded through an HTTP request.
  *
@@ -104,18 +114,12 @@ interface UploadedFileInterface {
   /**
    * Retrieve the error associated with the uploaded file.
    *
-   * The return value MUST be one of PHP's UPLOAD_ERR_XXX constants.
-   *
    * If the file was uploaded successfully, this method MUST return
-   * UPLOAD_ERR_OK.
+   * null.
    *
-   * Implementations SHOULD return the value stored in the "error" key of
-   * the file in the $_FILES array.
-   *
-   * @see http://php.net/manual/en/features.file-upload.errors.php
-   * @return int One of PHP's UPLOAD_ERR_XXX constants.
+   * @return ?UploadedFileError
    */
-  public function getError(): int;
+  public function getError(): ?UploadedFileError;
 
   /**
    * Retrieve the filename sent by the client.
