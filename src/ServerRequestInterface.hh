@@ -76,24 +76,26 @@ interface ServerRequestInterface extends RequestInterface {
    * typically derived from PHP's $_SERVER superglobal. The data IS NOT
    * REQUIRED to originate from $_SERVER.
    */
-  public function getServerParams(): dict<string, mixed>;
+  public function getServerParams(): dict<string, string>;
+
+  /**
+   * Set server parameters.
+   */
+  public function withServerParams(dict<string, string> $values): this;
 
   /**
    * Retrieve cookies.
    *
    * Retrieves cookies sent by the client to the server.
    *
-   * The data MUST be compatible with the structure of the $_COOKIE
-   * superglobal.
+   * Cookie names must not contain `.` or ` `.
    */
   public function getCookieParams(): dict<string, string>;
 
   /**
    * Return an instance with the specified cookies.
    *
-   * The data IS NOT REQUIRED to come from the $_COOKIE superglobal, but MUST
-   * be compatible with the structure of $_COOKIE. Typically, this data will
-   * be injected at instantiation.
+   * Cookie names must not contain `.` or ` `.
    *
    * This method MUST NOT update the related Cookie header of the request
    * instance, nor related values in the server params.
@@ -101,9 +103,6 @@ interface ServerRequestInterface extends RequestInterface {
    * This method MUST be implemented in such a way as to retain the
    * immutability of the message, and MUST return an instance that has the
    * updated cookie values.
-   *
-   * @param array $cookies Array of key/value pairs representing cookies.
-   * @return static
    */
   public function withCookieParams(dict<string, string> $cookies): this;
 
@@ -116,10 +115,8 @@ interface ServerRequestInterface extends RequestInterface {
    * params. If you need to ensure you are only getting the original
    * values, you may need to parse the query string from `getUri()->getQuery()`
    * or from the `QUERY_STRING` server param.
-   *
-   * @return array
    */
-  public function getQueryParams(): mixed;
+  public function getQueryParams(): dict<string, string>;
 
   /**
    * Return an instance with the specified query string arguments.
@@ -138,26 +135,13 @@ interface ServerRequestInterface extends RequestInterface {
    * This method MUST be implemented in such a way as to retain the
    * immutability of the message, and MUST return an instance that has the
    * updated query string arguments.
-   *
-   * @param array $query Array of query string arguments, typically from
-   *     $_GET.
-   * @return static
    */
-  public function withQueryParams(mixed $query): this;
+  public function withQueryParams(dict<string, string> $query): this;
 
   /**
    * Retrieve normalized file upload data.
-   *
-   * This method returns upload metadata in a normalized tree, with each leaf
-   * an instance of Facebook\Experimental\Http\Message\UploadedFileInterface.
-   *
-   * These values MAY be prepared from $_FILES or the message body during
-   * instantiation, or MAY be injected via withUploadedFiles().
-   *
-   * @return array An array tree of UploadedFileInterface instances; an empty
-   *     array MUST be returned if no data is present.
    */
-  public function getUploadedFiles(): mixed;
+  public function getUploadedFiles(): dict<string, UploadedFileInterface>;
 
   /**
    * Create a new instance with the specified uploaded files.
@@ -165,12 +149,10 @@ interface ServerRequestInterface extends RequestInterface {
    * This method MUST be implemented in such a way as to retain the
    * immutability of the message, and MUST return an instance that has the
    * updated body parameters.
-   *
-   * @param array $uploadedFiles An array tree of UploadedFileInterface instances.
-   * @return static
-   * @throws \InvalidArgumentException if an invalid structure is provided.
    */
-  public function withUploadedFiles(mixed $uploadedFiles): this;
+  public function withUploadedFiles(
+    dict<string, UploadedFileInterface> $uploadedFiles,
+  ): this;
 
   /**
    * Retrieve any parameters provided in the request body.
