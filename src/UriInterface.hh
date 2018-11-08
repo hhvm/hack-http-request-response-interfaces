@@ -221,10 +221,10 @@ interface UriInterface {
    * This method MUST retain the state of the current instance, and return
    * an instance that contains the specified user information.
    *
-   * A null value for the user is equivalent to removing user
+   * An empty string for the user is equivalent to removing user
    * information.
    */
-  public function withUserInfo(string $user, string $password = null): this;
+  public function withUserInfo(string $user, string $password): this;
 
   /**
    * Return an instance with the specified host.
@@ -236,7 +236,7 @@ interface UriInterface {
    *
    * @throws \InvalidArgumentException for invalid hostnames.
    */
-  public function withHost(string $host = null): this;
+  public function withHost(string $host): this;
 
   /**
    * Return an instance with the specified port.
@@ -274,7 +274,7 @@ interface UriInterface {
    *
    * @throws \InvalidArgumentException for invalid paths.
    */
-  public function withPath(string $path = null): this;
+  public function withPath(string $path): this;
 
   /**
    * Return an instance with the specified query params.
