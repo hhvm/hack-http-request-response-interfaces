@@ -127,7 +127,7 @@ interface UploadedFileInterface {
    * Implementations SHOULD return the value stored in the "name" key of
    * the file in the $_FILES array.
    */
-  public function getClientFilename(): ?string;
+  public function getClientFilename(): string;
 
   /**
    * Retrieve the media type sent by the client.
@@ -136,8 +136,7 @@ interface UploadedFileInterface {
    * a malicious media type with the intention to corrupt or hack your
    * application.
    *
-   * Implementations SHOULD return the value stored in the "type" key of
-   * the file in the $_FILES array.
+   * This may be the empty string.
    */
-  public function getClientMediaType(): ?string;
+  public function getClientMediaType(): string;
 }

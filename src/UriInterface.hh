@@ -53,7 +53,7 @@ interface UriInterface {
   /**
    * Retrieve the scheme component of the URI.
    *
-   * If no scheme is present, this method MUST return null
+   * If no scheme is present, this method MUST return the empty string
    *
    * The value returned MUST be normalized to lowercase, per RFC 3986
    * Section 3.1.
@@ -64,7 +64,7 @@ interface UriInterface {
    * @see https://tools.ietf.org/html/rfc3986#section-3.1
    * @return null|string The URI scheme.
    */
-  public function getScheme(): ?string;
+  public function getScheme(): string;
 
   /**
    * Retrieve the authority component of the URI.
@@ -88,19 +88,17 @@ interface UriInterface {
   /**
    * Retrieve the user information component of the URI.
    *
-   * If no credentials are present, this method MUST return null.
-   *
-   * If a user is present in the URI, this will return that value;
-   * additionally, if the password is also present, it will also be returned.
+   * If no credentials are present, this method MUST empty strings for username
+   * and password.
    *
    * @return shape A shape containing username and password
    */
-  public function getUserInfo(): ?shape('user' => string, 'pass' => ?string);
+  public function getUserInfo(): shape('user' => string, 'pass' => string);
 
   /**
    * Retrieve the host component of the URI.
    *
-   * If no host is present, this method MUST return a null value
+   * If no host is present, this method MUST return the empty string
    *
    * The value returned MUST be normalized to lowercase, per RFC 3986
    * Section 3.2.2.
@@ -108,7 +106,7 @@ interface UriInterface {
    * @see http://tools.ietf.org/html/rfc3986#section-3.2.2
    * @return null|string The URI host.
    */
-  public function getHost(): ?string;
+  public function getHost(): string;
 
   /**
    * Retrieve the port component of the URI.
@@ -150,14 +148,14 @@ interface UriInterface {
    *
    * @see https://tools.ietf.org/html/rfc3986#section-2
    * @see https://tools.ietf.org/html/rfc3986#section-3.3
-   * @return null|string The URI path.
    */
-  public function getPath(): ?string;
+  public function getPath(): string;
 
   /**
    * Retrieve the encoded query string of the URI.
    *
-   * If no query params or string is present, this method MUST return null
+   * If no query params or string is present, this method MUST return the empty
+   * string.
    *
    * The leading "?" character is not part of the query and MUST NOT be
    * added.
@@ -174,7 +172,7 @@ interface UriInterface {
    * @see https://tools.ietf.org/html/rfc3986#section-3.4
    * @return null|string The percent-encoded query string
    */
-  public function getRawQuery(): ?string;
+  public function getRawQuery(): string;
 
   /**
    * Retrieve the query params of the URI.
@@ -188,7 +186,7 @@ interface UriInterface {
   /**
    * Retrieve the fragment component of the URI.
    *
-   * If no fragment is present, this method MUST return null
+   * If no fragment is present, this method MUST return the empty string
    *
    * The leading "#" character is not part of the fragment and MUST NOT be
    * added.
@@ -200,7 +198,7 @@ interface UriInterface {
    * @see https://tools.ietf.org/html/rfc3986#section-2
    * @see https://tools.ietf.org/html/rfc3986#section-3.5
    */
-  public function getFragment(): ?string;
+  public function getFragment(): string;
 
   /**
    * Return an instance with the specified scheme.
@@ -211,11 +209,11 @@ interface UriInterface {
    * Implementations MUST support the schemes "http" and "https" case
    * insensitively, and MAY accommodate other schemes if required.
    *
-   * A null value provided for the scheme is equivalent to removing the scheme.
+   * An empty string is equivalent to removing the scheme.
    *
    * @throws \InvalidArgumentException for invalid or unsupported schemes.
    */
-  public function withScheme(?string $scheme): this;
+  public function withScheme(string $scheme): this;
 
   /**
    * Return an instance with the specified user information.
@@ -226,7 +224,7 @@ interface UriInterface {
    * A null value for the user is equivalent to removing user
    * information.
    */
-  public function withUserInfo(?string $user, ?string $password = null): this;
+  public function withUserInfo(string $user, string $password = null): this;
 
   /**
    * Return an instance with the specified host.
@@ -234,11 +232,11 @@ interface UriInterface {
    * This method MUST retain the state of the current instance, and return
    * an instance that contains the specified host.
    *
-   * A null value provided for the host is equivalent to removing the host.
+   * An empty string is equivalent to removing the host.
    *
    * @throws \InvalidArgumentException for invalid hostnames.
    */
-  public function withHost(?string $host = null): this;
+  public function withHost(string $host = null): this;
 
   /**
    * Return an instance with the specified port.
@@ -276,7 +274,7 @@ interface UriInterface {
    *
    * @throws \InvalidArgumentException for invalid paths.
    */
-  public function withPath(?string $path = null): this;
+  public function withPath(string $path = null): this;
 
   /**
    * Return an instance with the specified query params.
@@ -330,7 +328,7 @@ interface UriInterface {
    * @param string $fragment The fragment to use with the new instance.
    * @return static A new instance with the specified fragment.
    */
-  public function withFragment(?string $fragment = null): this;
+  public function withFragment(string $fragment): this;
 
   /**
    * Return the string representation as a URI reference.
