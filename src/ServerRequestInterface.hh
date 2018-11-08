@@ -177,108 +177,14 @@ interface ServerRequestInterface extends RequestInterface {
    *
    * If the request Content-Type is either application/x-www-form-urlencoded
    * or multipart/form-data, and the request method is POST, this method MUST
-   * return the contents of $_POST.
+   * return the key-value pairs.
    *
-   * Otherwise, this method may return any results of deserializing
-   * the request body content; as parsing returns structured content, the
-   * potential types MUST be arrays or objects only. A null value indicates
-   * the absence of body content.
-   *
-   * @return null|array|object The deserialized body parameters, if any.
-   *     These will typically be an array or object.
+   * Otherwise, it will return the empty dict.
    */
-  public function getParsedBody(): mixed;
+  public function getParsedBody(): dict<string, string>;
 
   /**
    * Return an instance with the specified body parameters.
-   *
-   * These MAY be injected during instantiation.
-   *
-   * If the request Content-Type is either application/x-www-form-urlencoded
-   * or multipart/form-data, and the request method is POST, use this method
-   * ONLY to inject the contents of $_POST.
-   *
-   * The data IS NOT REQUIRED to come from $_POST, but MUST be the results of
-   * deserializing the request body content. Deserialization/parsing returns
-   * structured data, and, as such, this method ONLY accepts arrays or objects,
-   * or a null value if nothing was available to parse.
-   *
-   * As an example, if content negotiation determines that the request data
-   * is a JSON payload, this method could be used to create a request
-   * instance with the deserialized parameters.
-   *
-   * This method MUST be implemented in such a way as to retain the
-   * immutability of the message, and MUST return an instance that has the
-   * updated body parameters.
-   *
-   * @param null|array|object $data The deserialized body data. This will
-   *     typically be in an array or object.
-   * @return static
-   * @throws \InvalidArgumentException if an unsupported argument type is
-   *     provided.
    */
-  public function withParsedBody(mixed $data): this;
-
-  /**
-   * Retrieve attributes derived from the request.
-   *
-   * The request "attributes" may be used to allow injection of any
-   * parameters derived from the request: e.g., the results of path
-   * match operations; the results of decrypting cookies; the results of
-   * deserializing non-form-encoded message bodies; etc. Attributes
-   * will be application and request specific, and CAN be mutable.
-   *
-   * @return array Attributes derived from the request.
-   */
-  public function getAttributes(): dict<string, mixed>;
-
-  /**
-   * Retrieve a single derived request attribute.
-   *
-   * Retrieves a single derived request attribute as described in
-   * getAttributes(). If the attribute has not been previously set, returns
-   * the default value as provided.
-   *
-   * This method obviates the need for a hasAttribute() method, as it allows
-   * specifying a default value to return if the attribute is not found.
-   *
-   * @see getAttributes()
-   * @param string $name The attribute name.
-   * @param mixed $default Default value to return if the attribute does not exist.
-   * @return mixed
-   */
-  public function getAttribute(string $name, mixed $default = null): mixed;
-
-  /**
-   * Return an instance with the specified derived request attribute.
-   *
-   * This method allows setting a single derived request attribute as
-   * described in getAttributes().
-   *
-   * This method MUST be implemented in such a way as to retain the
-   * immutability of the message, and MUST return an instance that has the
-   * updated attribute.
-   *
-   * @see getAttributes()
-   * @param string $name The attribute name.
-   * @param mixed $value The value of the attribute.
-   * @return static
-   */
-  public function withAttribute(string $name, mixed $value): this;
-
-  /**
-   * Return an instance that removes the specified derived request attribute.
-   *
-   * This method allows removing a single derived request attribute as
-   * described in getAttributes().
-   *
-   * This method MUST be implemented in such a way as to retain the
-   * immutability of the message, and MUST return an instance that removes
-   * the attribute.
-   *
-   * @see getAttributes()
-   * @param string $name The attribute name.
-   * @return static
-   */
-  public function withoutAttribute(string $name): this;
+  public function withParsedBody(dict<string, string> $data): this;
 }
