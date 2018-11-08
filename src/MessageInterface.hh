@@ -66,33 +66,24 @@ interface MessageInterface {
    * Retrieves all message header values.
    *
    * The keys represent the header name as it will be sent over the wire, and
-   * each value is an array of strings associated with the header.
-   *
-   *     // Represent the headers as a string
-   *     foreach ($message->getHeaders() as $name => $values) {
-   *         echo $name . ": " . implode(", ", $values);
-   *     }
-   *
-   *     // Emit headers iteratively:
-   *     foreach ($message->getHeaders() as $name => $values) {
-   *         foreach ($values as $value) {
-   *             header(sprintf('%s: %s', $name, $value), false);
-   *         }
-   *     }
+   * each value is a vec of strings associated with the header.
    *
    * While header names are not case-sensitive, getHeaders() will preserve the
    * exact case in which headers were originally specified.
    *
-   * @return string[][] Returns a dict of the message's headers. Each
-   *     key MUST be a header name, and each value MUST be an vec of strings
-   *     for that header.
+   * Implementations *MUST* return header names of the form `Foo-Bar`, but keys
+   * should be considered case-insensitive.
+   *
+   * Implementations *MAY* choose to normalize some headers in different ways,
+   * for example, `ETag` instead of `Etag`.
    */
   public function getHeaders(): dict<string, vec<string>>;
 
   /**
    * Checks if a header exists by the given case-insensitive name.
    *
-   * @param string $name Case-insensitive header field name.
+   * @param string $name Case-insensitive header field name, in the same form
+   *     as HTTP itself - e.g. `Content-Length`, not `CONTENT_LENGTH`.
    * @return Returns true if any header names match the given header
    *     name using a case-insensitive string comparison. Returns false if
    *     no matching header name is found in the message.
@@ -108,7 +99,8 @@ interface MessageInterface {
    * If the header does not appear in the message, this method MUST return an
    * empty array.
    *
-   * @param string $name Case-insensitive header field name.
+   * @param string $name Case-insensitive header field name, in the same form
+   *   as HTTP itself - e.g. `Content-Length`, not `CONTENT_LENGTH`
    */
   public function getHeader(string $name): vec<string>;
 
@@ -126,7 +118,8 @@ interface MessageInterface {
    * If the header does not appear in the message, this method MUST return
    * an empty string.
    *
-   * @param string $name Case-insensitive header field name.
+   * @param string $name Case-insensitive header field name, in the same form
+   *    as HTTP itself - for example, `Content-Length`, not `CONTENT_LENGTH`
    * @return string A string of values as provided for the given header
    *    concatenated together using a comma. If the header does not appear in
    *    the message, this method MUST return an empty string.
@@ -138,6 +131,9 @@ interface MessageInterface {
    *
    * While header names are case-insensitive, the casing of the header will
    * be preserved by this function, and returned from getHeaders().
+   *
+   * For example, if `foo` is already set as a header, calling
+   * `withHeader('Foo')` will unset `foo`, and set `Foo`
    *
    * This method MUST be implemented in such a way as to retain the
    * immutability of the message, and MUST return an instance that has the
