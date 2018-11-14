@@ -30,6 +30,8 @@
 
 namespace Facebook\Experimental\Http\Message;
 
+use namespace HH\Lib\Experimental\IO;
+
 /**
  * Representation of an outgoing, server-side response.
  *
@@ -92,4 +94,18 @@ interface ResponseInterface extends MessageInterface {
    * @return string Reason phrase; must return an empty string if none present.
    */
   public function getReasonPhrase(): string;
+
+  /**
+   * Gets the body of the message.
+   */
+  public function getBody(): IO\WriteHandle;
+
+  /**
+   * Return an instance with the specified message body.
+   *
+   * This method MUST be implemented in such a way as to retain the
+   * immutability of the message, and MUST return a new instance that has the
+   * new body stream.
+   */
+  public function withBody(IO\WriteHandle $body): this;
 }

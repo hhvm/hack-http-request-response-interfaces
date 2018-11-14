@@ -29,6 +29,7 @@
  */
 
 namespace Facebook\Experimental\Http\Message;
+use namespace HH\Lib\Experimental\IO;
 
 enum UploadedFileError: int {
 	ERROR_EXCEEDS_MAX_INI_SIZE = 1;
@@ -64,7 +65,7 @@ interface UploadedFileInterface {
    * @throws \RuntimeException in cases when no stream is available or can be
    *     created.
    */
-  public function getStream(): StreamInterface;
+  public function getStream(): IO\ReadHandle;
 
   /**
    * Move the uploaded file to a new location.

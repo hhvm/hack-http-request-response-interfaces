@@ -4,5 +4,8 @@
     "homepage": "https://github.com/facebookexperimental/hack-http-request-response-interfaces",
     "require-dev": {
         "hhvm/hhast": "^3.28.0"
+    },
+    "require": {
+        "hhvm/hsl-experimental": "^3.29"
     }
 }

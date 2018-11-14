@@ -30,6 +30,8 @@
 
 namespace Facebook\Experimental\Http\Message;
 
+use namespace HH\Lib\Experimental\IO;
+
 enum HTTPMethod: string {
   PUT     = 'PUT';
   GET     = 'GET';
@@ -155,4 +157,18 @@ interface RequestInterface extends MessageInterface {
    * @return static
    */
   public function withUri(UriInterface $uri, RequestURIOptions $options = shape('preserveHost' => false)): this;
+
+  /**
+   * Gets the body of the message.
+   */
+  public function getBody(): IO\ReadHandle;
+
+  /**
+   * Return an instance with the specified message body.
+   *
+   * This method MUST be implemented in such a way as to retain the
+   * immutability of the message, and MUST return a new instance that has the
+   * new body stream.
+   */
+  public function withBody(IO\ReadHandle $body): this;
 }
