@@ -206,4 +206,26 @@ interface MessageInterface {
    * @return static
    */
   public function withoutHeader(string $name): this;
+
+  /**
+   * Gets the body of the message.
+   *
+   * @return StreamInterface Returns the body as a stream.
+   */
+  public function getBody(): StreamInterface;
+
+  /**
+   * Return an instance with the specified message body.
+   *
+   * The body MUST be a StreamInterface object.
+   *
+   * This method MUST be implemented in such a way as to retain the
+   * immutability of the message, and MUST return a new instance that has the
+   * new body stream.
+   *
+   * @param StreamInterface $body Body.
+   * @return static
+   * @throws \InvalidArgumentException When the body is not valid.
+   */
+  public function withBody(StreamInterface $body): this;
 }

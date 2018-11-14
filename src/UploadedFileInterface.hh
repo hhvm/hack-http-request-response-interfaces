@@ -50,6 +50,23 @@ enum UploadedFileError: int {
  */
 interface UploadedFileInterface {
   /**
+   * Retrieve a stream representing the uploaded file.
+   *
+   * This method MUST return a StreamInterface instance, representing the
+   * uploaded file. The purpose of this method is to allow utilizing native PHP
+   * stream functionality to manipulate the file upload, such as
+   * stream_copy_to_stream() (though the result will need to be decorated in a
+   * native PHP stream wrapper to work with such functions).
+   *
+   * If the moveTo() method has been called previously, this method MUST raise
+   * an exception.
+   *
+   * @throws \RuntimeException in cases when no stream is available or can be
+   *     created.
+   */
+  public function getStream(): StreamInterface;
+
+  /**
    * Move the uploaded file to a new location.
    *
    * Use this method as an alternative to move_uploaded_file(). This method is
