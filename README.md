@@ -4,8 +4,7 @@ Hack HTTP Request and Response Interfaces
 This project aims to create standard request and response interfaces for Hack,
 using [PSR-7](http://www.php-fig.org/psr/psr-7/) as a starting point.
 
-This project is currently *highly experimental* - all APIs are subject to
-change, and we welcome discussion and feedback.
+This project is nearing a stable v1.0 release.
 
 ## Motivation
 
@@ -15,9 +14,13 @@ with Hack's type system.
 We would like agreement on a standardized interface before releasing v1.0 of
 several libraries that could and should use this.
 
+Additionally, with the planned end of PHP support in HHVM, it will stop being
+possible to use the canonical definitions or common implementations of PSR-7 in
+Hack code.
+
 ## Requirements
 
-HHVM 3.24 and above.
+HHVM 3.29 and above.
 
 ## License
 
