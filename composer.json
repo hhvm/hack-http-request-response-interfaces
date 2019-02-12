@@ -3,9 +3,9 @@
     "description": "Common interface for HTTP messages",
     "homepage": "https://github.com/facebookexperimental/hack-http-request-response-interfaces",
     "require-dev": {
-        "hhvm/hhast": "^3.28.0"
+        "hhvm/hhast": "^4.0"
     },
     "require": {
-        "hhvm/hsl-experimental": "^3.29"
+        "hhvm/hsl-experimental": "^4.0"
     }
 }
