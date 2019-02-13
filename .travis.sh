@@ -15,7 +15,6 @@ hh_client
 # no run-time tests for this as it's just interfaces
 # hhvm vendor/bin/hacktest tests/
 
-# ... but we probably should enable lint
-#if !(hhvm --version | grep -q -- -dev); then
-#  hhvm vendor/bin/hhast-lint
-#fi
+if !(hhvm --version | grep -q -- -dev); then
+  hhvm vendor/bin/hhast-lint
+fi
