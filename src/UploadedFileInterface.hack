@@ -1,4 +1,3 @@
-<?hh // strict
 /*
  *  Copyright (c) 2014 PHP Framework Interoperability Group
  *
@@ -29,7 +28,7 @@
  */
 
 namespace Facebook\Experimental\Http\Message;
-use namespace HH\Lib\Experimental\IO;
+use namespace HH\Lib\IO;
 
 enum UploadedFileError: int {
 	ERROR_EXCEEDS_MAX_INI_SIZE = 1;
