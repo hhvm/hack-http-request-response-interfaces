@@ -1,4 +1,3 @@
-<?hh // strict
 /*
  *  Copyright (c) 2014 PHP Framework Interoperability Group
  *
