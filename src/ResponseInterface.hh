@@ -30,7 +30,7 @@
 
 namespace Facebook\Experimental\Http\Message;
 
-use namespace HH\Lib\Experimental\IO;
+use namespace HH\Lib\IO;
 
 /**
  * Representation of an outgoing, server-side response.

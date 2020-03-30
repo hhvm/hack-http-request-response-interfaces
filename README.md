@@ -20,7 +20,7 @@ Hack code.
 
 ## Requirements
 
-HHVM 3.29 and above.
+HHVM 4.41 and above.
 
 ## License
 

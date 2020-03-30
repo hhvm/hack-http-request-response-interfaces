@@ -1,3 +1,4 @@
 vendor/
+*.hhast.parser-cache
 *.swp
 *~
