@@ -71,9 +71,10 @@ interface UploadedFileInterface {
    *
    * Use this method as an alternative to move_uploaded_file(). This method is
    * guaranteed to work in both SAPI and non-SAPI environments.
-   * Implementations must determine which environment they are in, and use the
+   * Implementations may determine which environment they are in, and use the
    * appropriate method (move_uploaded_file(), rename(), or a stream
-   * operation) to perform the operation.
+   * operation) to perform the operation. Implementations are not required to
+   * use these functions however. Implementing in pure Hack is also allowed.
    *
    * $targetPath may be an absolute path, or a relative path. If it is a
    * relative path, resolution should be the same as used by PHP's rename()
@@ -98,7 +99,7 @@ interface UploadedFileInterface {
    * @throws \RuntimeException on any error during the move operation, or on
    *     the second or subsequent call to the method.
    */
-  public function moveTo(string $targetPath): void;
+  public function moveToAsync(string $target_path): Awaitable<void>;
 
   /**
    * Retrieve the file size.
