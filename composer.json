@@ -6,6 +6,6 @@
         "hhvm/hhast": "^4.0"
     },
     "require": {
-        "hhvm/hsl-experimental": "^4.50"
+        "hhvm": "^4.128"
     }
 }
